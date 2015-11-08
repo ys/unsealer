@@ -1,0 +1,37 @@
+{
+  "name": "Unsealer",
+  "description": "Deploy multiple times with different shards to unseal the hashicorp vault",
+  "keywords": [
+    "vault",
+    "unseal",
+    "hashicorp",
+    "tools"
+  ],
+  "website": "https://github.com/ys/unsealer",
+  "repository": "https://github.com/ys/unsealer",
+  "env": {
+    "AUTH": {
+      "description": "Auth providers: One of github, heroku or google"
+    },
+    "OAUTH_ID": {
+      "description": "Oauth id for provider."
+    },
+    "OAUTH_SECRET": {
+      "description": "Oauth secret for provider."
+    },
+    "AUTHORIZED_DOMAIN": {
+      "description": "Accepted domain for auths: google and heroku"
+    },
+    "AUTHORIZED_ORG": {
+      "description": "User must be a member of that org name"
+    },
+    "VAULT_ADDR": {
+      "description": "Vault URL"
+    },
+    "SECRET_KEY_BASE": {
+      "description": "Secret for rails",
+      "generator": "secret"
+    }
+  },
+  "image": "heroku/ruby"
+}
