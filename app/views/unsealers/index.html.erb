@@ -1,12 +1,23 @@
+<h2>Vault status</h2>
+
+Sealed: <%= @status.sealed %>
+t: <%= @status.t %>
+n: <%= @status.n %>
+progress: <%= @status.progress %>
+
 <% if current_user %>
   <div class="user u-margin-Al u-padding-Al">
     <img class="small" style="height: 50px; width: 50px" src="<%=current_user.image%>"/>
     <%= current_user.name %> (<%= current_user.email %>)
     <%= link_to 'Disconnect', sessions_path, method: :delete %>
   </div>
-  <form action="/unsealer" method="post">
-    <button class="btn btn-danger btn-lg">Start unsealing vault</button>
-  </form>
+  <% if @status.sealed %>
+    <%= form_tag(unsealers_path, method: :post) do %>
+      <button class="btn btn-primary btn-lg">Start unsealing vault</button>
+    <% end %>
+  <% else %>
+    <%= link_to 'SEAL THE VAULT!!!', unsealers_path, method: :delete, class: "btn btn-danger bnt-lg" %>
+  <% end %>
 <% else %>
   <% case ENV["AUTH"] %>
   <% when "heroku" %>

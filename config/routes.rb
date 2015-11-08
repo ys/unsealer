@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resource :sessions
+  resource :unsealers
   get "/auth/:provider/callback" => "sessions#create"
-  root "unsealer#index"
+  root "unsealers#index"
 end
