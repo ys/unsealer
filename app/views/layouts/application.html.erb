@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Unsealer</title>
+  <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
+    <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
+  <link href="http://www.herokucdn.com/purple/1.1.2/purple.min.css" rel="stylesheet" />
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <header id="header" style="margin-bottom: 50px; padding:80px" class="gradient-primary">
+    <div class="container text-center" id="flex-item">
+      <h1 class="purple-logo">Unseal the vault</h1>
+    </div>
+  </header>
+
+  <div class="container text-center">
+    <% if flash[:error] %>
+      <div class="alert alert-danger">
+        <p><%= flash[:error] %></p>
+      </div>
+    <% end %>
+    <% if flash[:notice] %>
+      <div class="alert alert-info">
+        <p><%= flash[:notice] %></p>
+      </div>
+    <% end %>
+    <%= yield %>
+  </div>
+</body>
+</html>
