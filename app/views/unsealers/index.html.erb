@@ -16,7 +16,7 @@
   </div>
   <% if @status.sealed %>
     <%= form_tag(unsealers_path, method: :post) do %>
-      <button class="btn btn-primary btn-lg">Start unsealing vault</button>
+      <button class="btn btn-primary btn-lg">Unseal with this shard</button>
     <% end %>
   <% else %>
     <%= link_to 'SEAL THE VAULT!!!', unsealers_path, method: :delete, class: "btn btn-danger bnt-lg" %>
