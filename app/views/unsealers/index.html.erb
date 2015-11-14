@@ -21,7 +21,9 @@
       <button class="btn btn-primary btn-lg">Unseal with this shard</button>
     <% end %>
   <% else %>
-    <%= link_to 'SEAL THE VAULT!!!', unsealers_path, method: :delete, class: "btn btn-danger bnt-lg" %>
+    <%= form_tag(unsealers_path, method: :delete) do %>
+      <button class="btn btn-danger btn-lg">SEAL THE VAULT!!!</button>
+    <% end %>
   <% end %>
 <% else %>
   <div>
