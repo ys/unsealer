@@ -23,7 +23,10 @@ class UnsealersController < ApplicationController
   end
 
   def destroy
-    Vault.sys.seal
+    Excon.put("#{ENV["VAULT_ADDR"]}/v1/sys/seal", headers: DEFAULT_HEADERS)
+  rescue StandardError => e
+    flash[:error] = e.message
+  ensure
     redirect_to root_path
   end
 end
