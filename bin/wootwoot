@@ -1,0 +1,12 @@
+#!/usr/bin/env ruby
+require 'timeout'
+timeout_in_seconds = 60
+while true
+  status = Vault.sys.seal_status
+  if status.sealed
+    shards = ENV["VAULT_SHARDS"]
+    shards.split(",").each do |shard|
+      Excon.put("#{ENV["VAULT_ADDR"]}/v1/sys/unseal", body: {key: shard}.to_json)
+    end
+  end
+end
