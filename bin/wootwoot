@@ -1,4 +1,5 @@
 #!/usr/bin/env ruby
+require "vault"
 status = Vault.sys.seal_status
 if status.sealed
   shard = ENV["VAULT_SHARD"]
