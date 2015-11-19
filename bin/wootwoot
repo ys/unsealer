@@ -1,0 +1,7 @@
+#!/usr/bin/env ruby
+status = Vault.sys.seal_status
+if status.sealed
+  shard = ENV["VAULT_SHARD"]
+  Excon.put("#{ENV["VAULT_ADDR"]}/v1/sys/unseal",
+            body: {key: shard}.to_json)
+end
